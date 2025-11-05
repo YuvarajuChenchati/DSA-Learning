@@ -151,6 +151,48 @@ private void dfs(TrieNode node, String current, List<String> result) {
 - **Memory trade-off**: More memory for faster operations
 - **Path representation**: Each path represents a string
 
+## ⚠️ Common Mistakes
+
+### Not Handling Empty Strings
+- **Problem**: Not handling empty strings in trie
+- **Solution**: Mark root as end of word for empty strings or handle separately
+- **Example**: Check `word.isEmpty()` before inserting
+
+### Memory Leaks
+- **Problem**: Not cleaning up unused nodes
+- **Solution**: Remove nodes when no longer needed or use weak references
+- **Example**: Implement `delete()` method to remove nodes
+
+### Not Marking End of Word
+- **Problem**: Not marking which nodes represent end of words
+- **Solution**: Use boolean flag `isEndOfWord` to mark word endings
+- **Example**: `node.isEndOfWord = true;` when inserting complete word
+
+### Incorrect Character Mapping
+- **Problem**: Wrong character to index mapping
+- **Solution**: Use `char - 'a'` for lowercase, handle different cases
+- **Example**: `int index = ch - 'a';` for lowercase letters
+
+### Not Handling Case Sensitivity
+- **Problem**: Not handling case differences correctly
+- **Solution**: Convert to lowercase/uppercase or use larger array
+- **Example**: Convert all strings to lowercase before inserting
+
+### Wrong Search Implementation
+- **Problem**: Not distinguishing between prefix and word search
+- **Solution**: Use separate methods for prefix search and exact word search
+- **Example**: `searchPrefix()` returns true if prefix exists, `searchWord()` checks isEndOfWord
+
+### Memory Inefficiency
+- **Problem**: Using fixed-size array for all children
+- **Solution**: Use HashMap for children or compressed trie for space optimization
+- **Example**: `Map<Character, TrieNode> children = new HashMap<>();` for variable children
+
+### Not Handling Special Characters
+- **Problem**: Not handling Unicode or special characters
+- **Solution**: Use HashMap for children or larger array for Unicode support
+- **Example**: Use HashMap for characters beyond ASCII range
+
 ## 🎯 Interview Tips
 
 - Always consider space complexity

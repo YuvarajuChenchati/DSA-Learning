@@ -172,6 +172,43 @@ public static boolean isPalindrome(ListNode head) {
 - **Duplicate detection**: Treat array as linked list
 - **Intersection**: Find common node
 
+## ⚠️ Common Mistakes
+
+### Null Pointer Exceptions
+- **Problem**: Not checking for null before accessing
+- **Solution**: Always check `node != null` before `node.next`
+- **Example**: `if (fast != null && fast.next != null)` before accessing fast.next.next
+
+### Wrong Pointer Speed
+- **Problem**: Wrong speed ratio for fast and slow pointers
+- **Solution**: Fast pointer moves 2x speed: `fast = fast.next.next; slow = slow.next;`
+- **Example**: For cycle detection, fast moves 2 steps, slow moves 1 step
+
+### Infinite Loops
+- **Problem**: Not handling cycle causing infinite loop
+- **Solution**: Check for cycle: `fast == slow` indicates cycle
+- **Example**: `while (fast != null && fast.next != null && fast != slow)`
+
+### Not Handling Empty List
+- **Problem**: Not checking for empty list
+- **Solution**: Always check `head == null || head.next == null` first
+- **Example**: `if (head == null || head.next == null) return false;`
+
+### Wrong Middle Calculation
+- **Problem**: Incorrect middle node calculation
+- **Solution**: When fast reaches end, slow is at middle
+- **Example**: `while (fast != null && fast.next != null) { fast = fast.next.next; slow = slow.next; }`
+
+### Not Resetting Pointers
+- **Problem**: Not resetting pointers after cycle detection
+- **Solution**: Reset pointers after finding cycle start
+- **Example**: After finding cycle, reset slow to head and move both one step
+
+### Wrong Cycle Start Detection
+- **Problem**: Incorrectly finding cycle start node
+- **Solution**: After detecting cycle, reset slow to head and move both one step
+- **Example**: `slow = head; while (slow != fast) { slow = slow.next; fast = fast.next; }`
+
 ## 🎯 Interview Tips
 
 - Always check for null pointers

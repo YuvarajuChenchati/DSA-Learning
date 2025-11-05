@@ -128,6 +128,43 @@ public static int kmpSearch(String text, String pattern) {
 - **Dynamic programming**: Useful for complex string problems
 - **String interning**: Be aware of memory implications
 
+## ⚠️ Common Mistakes
+
+### String Immutability
+- **Problem**: Trying to modify strings in-place
+- **Solution**: Use StringBuilder or character array for modifications
+- **Example**: `str.charAt(i) = 'a'` is wrong, use `StringBuilder sb = new StringBuilder(str);`
+
+### Off-by-One Errors in Substring
+- **Problem**: Incorrect substring indices
+- **Solution**: Remember substring is inclusive start, exclusive end
+- **Example**: `s.substring(0, 3)` gives characters at indices 0, 1, 2 (not 3)
+
+### Case Sensitivity
+- **Problem**: Not handling case differences correctly
+- **Solution**: Convert to lowercase/uppercase before comparison
+- **Example**: `s.toLowerCase().equals(t.toLowerCase())` for case-insensitive comparison
+
+### Character vs String Comparison
+- **Problem**: Comparing characters with == instead of equals
+- **Solution**: Use == for characters, equals() for strings
+- **Example**: `s.charAt(i) == 'a'` is correct, `s.charAt(i).equals("a")` is wrong
+
+### Not Handling Empty Strings
+- **Problem**: Not checking for empty strings
+- **Solution**: Always check if string is null or empty first
+- **Example**: `if (s == null || s.length() == 0) return result;`
+
+### StringBuilder vs String Concatenation
+- **Problem**: Using string concatenation in loops
+- **Solution**: Use StringBuilder for multiple concatenations
+- **Example**: `sb.append(str)` in loop, not `result += str` in loop
+
+### Unicode and Special Characters
+- **Problem**: Not handling Unicode characters correctly
+- **Solution**: Use proper encoding and be aware of character ranges
+- **Example**: Some characters take multiple bytes, use proper string methods
+
 ## 🎯 Interview Tips
 
 - Consider case sensitivity and special characters

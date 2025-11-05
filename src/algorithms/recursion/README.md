@@ -129,6 +129,43 @@ public static int binarySearch(int[] arr, int target, int left, int right) {
 - **Memoization**: Cache results to avoid recomputation
 - **Tail recursion**: Optimize for space efficiency
 
+## ⚠️ Common Mistakes
+
+### Missing Base Case
+- **Problem**: No base case causing infinite recursion
+- **Solution**: Always define base case first
+- **Example**: `if (n <= 1) return 1;` for factorial
+
+### Infinite Recursion
+- **Problem**: Recursive case doesn't reduce problem size
+- **Solution**: Ensure recursive case moves toward base case
+- **Example**: `factorial(n - 1)` not `factorial(n)` in recursive call
+
+### Stack Overflow
+- **Problem**: Deep recursion causing stack overflow
+- **Solution**: Use iterative approach or tail recursion for deep calls
+- **Example**: Use iteration for large n, recursion for small n
+
+### Not Caching Results
+- **Problem**: Recomputing same subproblems
+- **Solution**: Use memoization to cache results
+- **Example**: `Map<Integer, Integer> memo = new HashMap<>();` for caching
+
+### Wrong Recursive Call
+- **Problem**: Incorrect recursive call parameters
+- **Solution**: Ensure parameters are correct for recursive case
+- **Example**: `fibonacci(n - 1) + fibonacci(n - 2)` not `fibonacci(n)`
+
+### Not Handling Edge Cases
+- **Problem**: Not handling negative numbers or zero
+- **Solution**: Always check edge cases first
+- **Example**: `if (n < 0) throw new IllegalArgumentException();`
+
+### Space Complexity Ignorance
+- **Problem**: Not considering recursion stack space
+- **Solution**: Remember recursion stack contributes to space complexity
+- **Example**: Binary search has O(log n) space due to recursion stack
+
 ## 🎯 Interview Tips
 
 - Always identify base case first

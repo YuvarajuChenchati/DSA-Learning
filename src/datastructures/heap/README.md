@@ -136,6 +136,43 @@ class MinHeap {
 - **Heap sort**: In-place sorting algorithm
 - **Top K problems**: Use heap for efficiency
 
+## ⚠️ Common Mistakes
+
+### Wrong Heap Type
+- **Problem**: Using min heap when max heap is needed
+- **Solution**: Understand min heap (smallest at top) vs max heap (largest at top)
+- **Example**: Use min heap for top K largest, max heap for top K smallest
+
+### Incorrect Comparator
+- **Problem**: Wrong comparator for priority queue
+- **Solution**: Use `(a, b) -> a - b` for min heap, `(a, b) -> b - a` for max heap
+- **Example**: `PriorityQueue<Integer> minHeap = new PriorityQueue<>((a, b) -> a - b);`
+
+### Not Maintaining Heap Property
+- **Problem**: Not maintaining heap property after operations
+- **Solution**: Always heapify after insert/delete operations
+- **Example**: Call `heapifyUp()` after insert, `heapifyDown()` after delete
+
+### Empty Heap Access
+- **Problem**: Accessing top element from empty heap
+- **Solution**: Always check `!heap.isEmpty()` before `heap.peek()` or `heap.poll()`
+- **Example**: `if (!heap.isEmpty()) { int top = heap.peek(); }`
+
+### Incorrect Heap Size
+- **Problem**: Not limiting heap size for space optimization
+- **Solution**: Maintain only K elements in heap for top K problems
+- **Example**: Remove smallest when heap size > K for top K largest
+
+### Wrong Heapify Direction
+- **Problem**: Heapifying in wrong direction
+- **Solution**: Heapify up after insert, heapify down after delete
+- **Example**: After insert, compare with parent and swap up if needed
+
+### Not Using Two Heaps
+- **Problem**: Not using two heaps for median problems
+- **Solution**: Use min heap for larger half, max heap for smaller half
+- **Example**: Maintain size balance: maxHeap.size() - minHeap.size() <= 1
+
 ## 🎯 Interview Tips
 
 - Choose min vs max heap based on problem

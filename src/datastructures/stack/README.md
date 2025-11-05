@@ -133,6 +133,43 @@ public static int[] nextGreaterElement(int[] nums) {
 - **Parentheses matching**: Natural stack application
 - **Histogram problems**: Use monotonic stack
 
+## ⚠️ Common Mistakes
+
+### Empty Stack Access
+- **Problem**: Popping from empty stack without checking
+- **Solution**: Always check `!stack.isEmpty()` before `stack.pop()`
+- **Example**: `if (!stack.isEmpty()) { int top = stack.pop(); }`
+
+### Wrong Stack Order
+- **Problem**: Pushing/popping in wrong order
+- **Solution**: Remember LIFO (Last In First Out)
+- **Example**: Last pushed element is first popped
+
+### Not Clearing Stack
+- **Problem**: Not clearing stack between test cases
+- **Solution**: Clear stack before each new problem
+- **Example**: `stack.clear();` or create new stack
+
+### Using Wrong Data Structure
+- **Problem**: Using stack when queue is needed
+- **Solution**: Understand difference: stack is LIFO, queue is FIFO
+- **Example**: Use stack for parentheses matching, queue for BFS
+
+### Stack Overflow
+- **Problem**: Recursion causing stack overflow
+- **Solution**: Use iterative approach with explicit stack
+- **Example**: Use `Stack<TreeNode>` instead of recursion for tree traversal
+
+### Incorrect Parentheses Matching
+- **Problem**: Not handling all types of parentheses
+- **Solution**: Check for matching pairs: (), [], {}
+- **Example**: Use map to match opening and closing brackets
+
+### Monotonic Stack Errors
+- **Problem**: Not maintaining monotonic order correctly
+- **Solution**: Pop elements that violate monotonic property
+- **Example**: For decreasing stack, pop while `stack.peek() < current`
+
 ## 🎯 Interview Tips
 
 - Think about LIFO when solving problems

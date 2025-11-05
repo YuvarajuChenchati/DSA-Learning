@@ -129,6 +129,48 @@ class HashTable<K, V> {
 - **Resizing**: Double capacity when needed
 - **Hash codes**: Override equals and hashCode together
 
+## ⚠️ Common Mistakes
+
+### Not Handling Collisions
+- **Problem**: Assuming no collisions in hash table
+- **Solution**: Always consider collision resolution (chaining or open addressing)
+- **Example**: Use linked list or probing for collision resolution
+
+### Not Overriding equals and hashCode
+- **Problem**: Using custom objects as keys without overriding equals/hashCode
+- **Solution**: Always override both equals() and hashCode() together
+- **Example**: Two objects equal must have same hashCode
+
+### Hash Function Quality
+- **Problem**: Poor hash function causing many collisions
+- **Solution**: Use good hash function that distributes keys uniformly
+- **Example**: Use prime number multiplier and modulo for better distribution
+
+### Not Handling Null Keys
+- **Problem**: Not handling null keys or values
+- **Solution**: Check for null before hashing or use null-safe hash function
+- **Example**: `if (key == null) return 0;` before hashing
+
+### Memory Leaks
+- **Problem**: Not removing entries when no longer needed
+- **Solution**: Remove entries when done or use weak references
+- **Example**: `map.remove(key);` when entry is no longer needed
+
+### Integer Overflow in Hash
+- **Problem**: Hash calculation causing integer overflow
+- **Solution**: Use long for intermediate calculations or modulo arithmetic
+- **Example**: `long hash = (long)key * prime % size;` to avoid overflow
+
+### Wrong Load Factor
+- **Problem**: Not resizing when load factor is high
+- **Solution**: Resize when load factor exceeds threshold (typically 0.75)
+- **Example**: Double capacity when size > capacity * loadFactor
+
+### Not Using ConcurrentHashMap
+- **Problem**: Using HashMap in multi-threaded environment
+- **Solution**: Use ConcurrentHashMap for thread-safe operations
+- **Example**: `ConcurrentHashMap<K, V>` for concurrent access
+
 ## 🎯 Interview Tips
 
 - Consider collision resolution strategies

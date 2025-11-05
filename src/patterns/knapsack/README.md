@@ -116,6 +116,48 @@ public int unboundedKnapsack(int[] weights, int[] values, int capacity) {
 - **Space optimization**: Use 1D array for unbounded knapsack
 - **Decision making**: Include or exclude each item
 
+## ⚠️ Common Mistakes
+
+### Wrong Knapsack Type
+- **Problem**: Not identifying 0/1 vs unbounded knapsack
+- **Solution**: 0/1 means each item used once, unbounded means unlimited use
+- **Example**: 0/1: `dp[i][w] = dp[i-1][w]`, unbounded: `dp[w] = dp[w - weight[i]]`
+
+### Wrong State Definition
+- **Problem**: Incorrectly defining DP state
+- **Solution**: Clearly define what dp[i][w] represents
+- **Example**: `dp[i][w]` = maximum value using first i items with capacity w
+
+### Incorrect Base Case
+- **Problem**: Wrong base case initialization
+- **Solution**: Initialize base cases: dp[0][w] = 0 for all w
+- **Example**: `dp[0][w] = 0;` for all w (no items, no value)
+
+### Wrong Transition Formula
+- **Problem**: Incorrect recurrence relation
+- **Solution**: Include item if weight <= capacity, else exclude
+- **Example**: `dp[i][w] = Math.max(dp[i-1][w], dp[i-1][w-weight[i]] + value[i]);`
+
+### Not Optimizing Space
+- **Problem**: Using O(n*W) space when O(W) is possible
+- **Solution**: Use 1D array and iterate backwards for 0/1 knapsack
+- **Example**: `dp[w] = Math.max(dp[w], dp[w - weight[i]] + value[i]);` for unbounded
+
+### Index Out of Bounds
+- **Problem**: Accessing array elements out of bounds
+- **Solution**: Check bounds before accessing: `w >= weight[i]`
+- **Example**: `if (w >= weight[i]) include; else exclude;`
+
+### Not Handling Zero Capacity
+- **Problem**: Not handling zero capacity or empty arrays
+- **Solution**: Always check edge cases first
+- **Example**: `if (capacity == 0 || items.length == 0) return 0;`
+
+### Wrong Weight Check
+- **Problem**: Not checking if weight exceeds capacity
+- **Solution**: Check `weight[i] <= w` before including item
+- **Example**: `if (weight[i] <= w) { include item; } else { exclude item; }`
+
 ## 🎯 Interview Tips
 
 - Identify if it's 0/1 or unbounded knapsack

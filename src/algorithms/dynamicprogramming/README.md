@@ -122,6 +122,48 @@ public int lcs(String s1, String s2) {
 - **Optimization**: Use space optimization when possible
 - **Pattern recognition**: Identify common DP patterns
 
+## ⚠️ Common Mistakes
+
+### Not Identifying Overlapping Subproblems
+- **Problem**: Not recognizing when DP is applicable
+- **Solution**: Look for overlapping subproblems and optimal substructure
+- **Example**: Fibonacci has overlapping subproblems (fib(n-1) and fib(n-2))
+
+### Wrong State Definition
+- **Problem**: Incorrectly defining DP state
+- **Solution**: Clearly define what dp[i] represents
+- **Example**: `dp[i]` = maximum profit up to day i, not just profit on day i
+
+### Incorrect Base Case
+- **Problem**: Wrong base case initialization
+- **Solution**: Initialize base cases correctly
+- **Example**: `dp[0] = 0; dp[1] = 1;` for Fibonacci, not `dp[0] = 1;`
+
+### Wrong Transition Formula
+- **Problem**: Incorrect recurrence relation
+- **Solution**: Think about how to build current state from previous states
+- **Example**: `dp[i] = dp[i-1] + dp[i-2];` for Fibonacci, not `dp[i] = dp[i-1] + 1;`
+
+### Not Optimizing Space
+- **Problem**: Using O(n) space when O(1) is possible
+- **Solution**: Use only necessary variables for space optimization
+- **Example**: Use `prev` and `curr` instead of `dp[]` array for Fibonacci
+
+### Index Out of Bounds
+- **Problem**: Accessing dp array out of bounds
+- **Solution**: Check bounds before accessing: `i >= 0 && i < dp.length`
+- **Example**: Check `i - 1 >= 0` before accessing `dp[i - 1]`
+
+### Not Handling Edge Cases
+- **Problem**: Not handling empty input or single element
+- **Solution**: Always check edge cases first
+- **Example**: `if (n == 0) return 0; if (n == 1) return 1;` for Fibonacci
+
+### Memoization Key Errors
+- **Problem**: Wrong key for memoization map
+- **Solution**: Use unique key that represents state completely
+- **Example**: Use `i + "," + j` for 2D DP, not just `i`
+
 ## 🎯 Interview Tips
 
 - Start with recursive solution

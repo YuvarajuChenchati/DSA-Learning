@@ -128,6 +128,48 @@ public int binarySearch(int[] arr, int target, int left, int right) {
 - **Time complexity**: Often O(n log n) due to divide step
 - **Space complexity**: O(log n) due to recursion depth
 
+## ⚠️ Common Mistakes
+
+### Missing Base Case
+- **Problem**: No base case for divide and conquer
+- **Solution**: Always define base case for smallest problem
+- **Example**: `if (left >= right) return;` for merge sort base case
+
+### Incorrect Divide Step
+- **Problem**: Not dividing problem correctly
+- **Solution**: Divide problem into equal or balanced subproblems
+- **Example**: Divide array into two halves: `mid = (left + right) / 2;`
+
+### Wrong Combine Step
+- **Problem**: Incorrectly combining solutions
+- **Solution**: Correctly merge solutions from subproblems
+- **Example**: Merge two sorted arrays in merge sort
+
+### Not Handling Edge Cases
+- **Problem**: Not handling empty or single element cases
+- **Solution**: Always check edge cases first
+- **Example**: `if (arr == null || arr.length <= 1) return;`
+
+### Index Out of Bounds
+- **Problem**: Array index out of bounds in divide step
+- **Solution**: Check bounds before accessing: `left < right`
+- **Example**: Check `mid >= 0 && mid < arr.length` before accessing arr[mid]
+
+### Infinite Recursion
+- **Problem**: Not reducing problem size in recursive call
+- **Solution**: Ensure recursive calls work on smaller subproblems
+- **Example**: `mergeSort(arr, left, mid);` not `mergeSort(arr, left, right);`
+
+### Wrong Time Complexity
+- **Problem**: Incorrectly analyzing time complexity
+- **Solution**: Use master theorem for divide and conquer recurrences
+- **Example**: Merge sort: T(n) = 2T(n/2) + O(n) = O(n log n)
+
+### Not Optimizing Combine Step
+- **Problem**: Inefficient combine step
+- **Solution**: Optimize combine step for better performance
+- **Example**: Merge two sorted arrays in O(n) time, not O(n²)
+
 ## 🎯 Interview Tips
 
 - Always identify base case

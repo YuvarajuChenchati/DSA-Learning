@@ -138,6 +138,48 @@ public void bfs(int start) {
 - **Topological Sort**: Use for dependency resolution
 - **Shortest Path**: Use Dijkstra's or BFS
 
+## ⚠️ Common Mistakes
+
+### Not Marking Visited Nodes
+- **Problem**: Visiting same node multiple times in DFS/BFS
+- **Solution**: Use visited set or boolean array to mark visited nodes
+- **Example**: `boolean[] visited = new boolean[n]; visited[node] = true;`
+
+### Stack Overflow in DFS
+- **Problem**: Deep recursion causing stack overflow
+- **Solution**: Use iterative DFS with explicit stack
+- **Example**: Use `Stack<Integer>` for iterative DFS
+
+### Wrong Graph Representation
+- **Problem**: Using wrong representation (adjacency list vs matrix)
+- **Solution**: Use adjacency list for sparse graphs, matrix for dense graphs
+- **Example**: `List<List<Integer>> adjList` for sparse, `boolean[][] adjMatrix` for dense
+
+### Not Handling Disconnected Graphs
+- **Problem**: Not considering disconnected components
+- **Solution**: Check all nodes and start DFS/BFS from unvisited nodes
+- **Example**: Loop through all nodes and start traversal from unvisited ones
+
+### Infinite Loops in Cycles
+- **Problem**: Not detecting cycles correctly
+- **Solution**: Use visited set or parent tracking for cycle detection
+- **Example**: Track parent node to avoid false cycle detection
+
+### Incorrect BFS Implementation
+- **Problem**: Not using queue correctly for BFS
+- **Solution**: Use queue for BFS, mark visited when adding to queue
+- **Example**: `Queue<Integer> q = new LinkedList<>(); q.offer(start); visited[start] = true;`
+
+### Wrong Shortest Path Algorithm
+- **Problem**: Using wrong algorithm for shortest path
+- **Solution**: Use BFS for unweighted, Dijkstra for weighted, Bellman-Ford for negative weights
+- **Example**: BFS for unweighted graph, Dijkstra for weighted graph
+
+### Memory Issues with Large Graphs
+- **Problem**: Not optimizing for large graphs
+- **Solution**: Use sparse representation and avoid unnecessary data structures
+- **Example**: Use adjacency list instead of matrix for large sparse graphs
+
 ## 🎯 Interview Tips
 
 - Choose appropriate representation

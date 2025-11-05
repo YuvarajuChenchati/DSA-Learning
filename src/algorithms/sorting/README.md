@@ -154,6 +154,43 @@ private static void quickSortHelper(int[] arr, int low, int high) {
 - **Non-comparison sorts**: Counting sort, radix sort
 - **Hybrid sorts**: Tim sort, intro sort
 
+## ⚠️ Common Mistakes
+
+### Wrong Sorting Algorithm
+- **Problem**: Using wrong sorting algorithm for the problem
+- **Solution**: Choose based on requirements: stability, space, time complexity
+- **Example**: Use merge sort for stable sort, quicksort for in-place sort
+
+### Index Out of Bounds
+- **Problem**: Array index out of bounds in sorting
+- **Solution**: Always check array bounds: `i < arr.length` not `i <= arr.length`
+- **Example**: `for (int i = 0; i < arr.length - 1; i++)` for bubble sort
+
+### Incorrect Comparison
+- **Problem**: Wrong comparison operator in sorting
+- **Solution**: Use `>` for ascending, `<` for descending
+- **Example**: `if (arr[j] > arr[j + 1])` for ascending order
+
+### Not Handling Empty Array
+- **Problem**: Not checking for empty array
+- **Solution**: Always check `arr == null || arr.length == 0` first
+- **Example**: `if (arr == null || arr.length == 0) return;` before sorting
+
+### Quicksort Pivot Selection
+- **Problem**: Poor pivot selection causing O(n²) worst case
+- **Solution**: Use random pivot or median-of-three for better performance
+- **Example**: `int pivot = arr[low + (high - low) / 2];` for median pivot
+
+### Merge Sort Space Issues
+- **Problem**: Not considering O(n) space for merge sort
+- **Solution**: Consider space complexity when choosing algorithm
+- **Example**: Use quicksort for in-place sorting if space is limited
+
+### Not Maintaining Stability
+- **Problem**: Not preserving relative order of equal elements
+- **Solution**: Use stable sort (merge sort, insertion sort) when needed
+- **Example**: Use merge sort when relative order matters
+
 ## 🎯 Interview Tips
 
 - Choose appropriate sorting algorithm

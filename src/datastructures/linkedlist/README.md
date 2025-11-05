@@ -120,6 +120,43 @@ public ListNode insertAtTail(ListNode head, int val) {
 - **In-place operations**: Save space complexity
 - **Cycle detection**: Use Floyd's algorithm
 
+## ⚠️ Common Mistakes
+
+### Null Pointer Exceptions
+- **Problem**: Not checking for null before accessing node
+- **Solution**: Always check `node != null` before `node.next` or `node.val`
+- **Example**: `if (head != null && head.next != null)` before accessing head.next
+
+### Losing Reference to Head
+- **Problem**: Modifying head pointer and losing original reference
+- **Solution**: Use dummy head or store original head reference
+- **Example**: `ListNode dummy = new ListNode(0); dummy.next = head;`
+
+### Incorrect Pointer Updates
+- **Problem**: Updating pointers in wrong order
+- **Solution**: Store next node before updating current node
+- **Example**: `ListNode next = curr.next; curr.next = prev; prev = curr; curr = next;`
+
+### Cycle Detection Issues
+- **Problem**: Not handling fast pointer reaching null
+- **Solution**: Check `fast != null && fast.next != null` before accessing fast.next.next
+- **Example**: `while (fast != null && fast.next != null)` before moving pointers
+
+### Memory Leaks in Deletion
+- **Problem**: Not properly disconnecting nodes
+- **Solution**: Set node.next to null when removing
+- **Example**: `prev.next = curr.next; curr.next = null;` when deleting node
+
+### Edge Cases Not Handled
+- **Problem**: Not handling empty list, single node, or two nodes
+- **Solution**: Always check edge cases first
+- **Example**: `if (head == null || head.next == null) return head;`
+
+### Infinite Loops
+- **Problem**: Creating cycles accidentally
+- **Solution**: Always ensure pointers are updated correctly
+- **Example**: When reversing, ensure all pointers are updated properly
+
 ## 🎯 Interview Tips
 
 - Always consider edge cases (empty list, single node)

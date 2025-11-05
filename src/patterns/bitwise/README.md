@@ -124,6 +124,43 @@ public int singleNumber(int[] nums) {
 - **Set operations**: Use bitwise for union, intersection
 - **Optimization**: Often faster than arithmetic operations
 
+## ⚠️ Common Mistakes
+
+### Operator Precedence
+- **Problem**: Not using parentheses with bitwise operators
+- **Solution**: Use parentheses to avoid precedence issues
+- **Example**: `(n & 1) == 0` not `n & 1 == 0`
+
+### Wrong XOR Properties
+- **Problem**: Not understanding XOR properties
+- **Solution**: Remember: a ^ a = 0, a ^ 0 = a, XOR is commutative
+- **Example**: Use XOR to find single number: `result ^= nums[i];`
+
+### Sign Extension Issues
+- **Problem**: Not handling negative numbers correctly
+- **Solution**: Consider two's complement representation
+- **Example**: Right shift on negative numbers fills with 1s (sign extension)
+
+### Bit Index Confusion
+- **Problem**: Confusing 0-indexed vs 1-indexed bit positions
+- **Solution**: Always use 0-indexed (LSB is bit 0)
+- **Example**: Bit 0 is rightmost, bit 31 is leftmost for 32-bit integers
+
+### Overflow in Bit Shifts
+- **Problem**: Shifting beyond data type width
+- **Solution**: Check shift amount is within valid range
+- **Example**: For 32-bit int, shift amount should be 0-31
+
+### Wrong Bit Mask
+- **Problem**: Using wrong bit mask for operations
+- **Solution**: Use correct mask: `1 << i` for set, `~(1 << i)` for clear
+- **Example**: Set bit i: `n | (1 << i)`, clear bit i: `n & ~(1 << i)`
+
+### Not Handling Edge Cases
+- **Problem**: Not handling zero or negative numbers
+- **Solution**: Always check edge cases first
+- **Example**: `if (n == 0) return 0;` before bit operations
+
 ## 🎯 Interview Tips
 
 - Always consider bitwise solutions for optimization

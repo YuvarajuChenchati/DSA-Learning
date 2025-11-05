@@ -145,6 +145,43 @@ public static int maxSumSubarray(int[] arr, int k) {
 - **Strings**: Use for palindrome and substring problems
 - **Sliding window**: Use for subarray problems
 
+## ⚠️ Common Mistakes
+
+### Wrong Pointer Movement
+- **Problem**: Moving pointers incorrectly
+- **Solution**: Understand when to move which pointer based on problem
+- **Example**: In sorted array, move left if sum < target, right if sum > target
+
+### Off-by-One Errors
+- **Problem**: Incorrect boundary conditions
+- **Solution**: Always check `left < right` not `left <= right`
+- **Example**: `while (left < right)` not `while (left <= right)`
+
+### Index Out of Bounds
+- **Problem**: Accessing array elements out of bounds
+- **Solution**: Check bounds before accessing: `left >= 0 && right < arr.length`
+- **Example**: Check `left < arr.length && right >= 0` before accessing
+
+### Not Handling Empty Array
+- **Problem**: Not checking for empty array
+- **Solution**: Always check `arr == null || arr.length == 0` first
+- **Example**: `if (arr == null || arr.length == 0) return result;`
+
+### Wrong Initialization
+- **Problem**: Wrong initial pointer positions
+- **Solution**: Initialize pointers correctly: `left = 0, right = arr.length - 1`
+- **Example**: For sorted array, start from both ends
+
+### Not Skipping Duplicates
+- **Problem**: Not skipping duplicates in result
+- **Solution**: Skip duplicates when moving pointers
+- **Example**: `while (left < right && arr[left] == arr[left + 1]) left++;`
+
+### Infinite Loops
+- **Problem**: Pointers not moving causing infinite loop
+- **Solution**: Ensure at least one pointer moves in each iteration
+- **Example**: Always increment `left` or decrement `right` in loop
+
 ## 🎯 Interview Tips
 
 - Identify if array is sorted

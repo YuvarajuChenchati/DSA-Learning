@@ -182,6 +182,43 @@ public static String minWindow(String s, String t) {
 - **Two pointers**: Maintain window boundaries
 - **Optimization**: Avoid redundant calculations
 
+## ⚠️ Common Mistakes
+
+### Wrong Window Size
+- **Problem**: Not maintaining correct window size
+- **Solution**: Track window boundaries carefully: `right - left + 1`
+- **Example**: For fixed window size k, maintain `right - left + 1 == k`
+
+### Not Shrinking Window
+- **Problem**: Not shrinking window when condition violated
+- **Solution**: Shrink window from left when condition is violated
+- **Example**: `while (conditionViolated) { remove arr[left]; left++; }`
+
+### Not Expanding Window
+- **Problem**: Not expanding window when condition valid
+- **Solution**: Expand window from right when condition is valid
+- **Example**: `while (conditionValid) { add arr[right]; right++; }`
+
+### Wrong Hash Map Update
+- **Problem**: Not updating hash map correctly
+- **Solution**: Increment when adding, decrement when removing
+- **Example**: `map.put(ch, map.getOrDefault(ch, 0) + 1);` when adding
+
+### Not Handling Empty Window
+- **Problem**: Not checking for empty window
+- **Solution**: Always check `left <= right` before processing
+- **Example**: `if (left <= right && windowSize == k) processWindow();`
+
+### Index Out of Bounds
+- **Problem**: Accessing array elements out of bounds
+- **Solution**: Check bounds before accessing: `right < arr.length`
+- **Example**: `while (right < arr.length) { process arr[right]; }`
+
+### Not Resetting Variables
+- **Problem**: Not resetting variables between test cases
+- **Solution**: Reset all variables before processing new window
+- **Example**: `left = 0; right = 0; maxLen = 0;` before processing
+
 ## 🎯 Interview Tips
 
 - Identify if problem needs fixed or variable window

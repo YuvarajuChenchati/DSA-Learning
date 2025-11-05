@@ -175,6 +175,43 @@ public class CircularQueue {
 - **Priority queue**: Use heap for priority-based operations
 - **Circular queue**: Efficient memory usage
 
+## ⚠️ Common Mistakes
+
+### Empty Queue Access
+- **Problem**: Polling from empty queue without checking
+- **Solution**: Always check `!queue.isEmpty()` before `queue.poll()`
+- **Example**: `if (!queue.isEmpty()) { int front = queue.poll(); }`
+
+### Wrong Queue Order
+- **Problem**: Adding/removing in wrong order
+- **Solution**: Remember FIFO (First In First Out)
+- **Example**: First added element is first removed
+
+### Not Clearing Queue
+- **Problem**: Not clearing queue between test cases
+- **Solution**: Clear queue before each new problem
+- **Example**: `queue.clear();` or create new queue
+
+### Using Wrong Data Structure
+- **Problem**: Using queue when stack is needed
+- **Solution**: Understand difference: queue is FIFO, stack is LIFO
+- **Example**: Use queue for BFS, stack for DFS
+
+### ArrayDeque vs LinkedList
+- **Problem**: Not choosing right queue implementation
+- **Solution**: Use ArrayDeque for better performance, LinkedList for flexibility
+- **Example**: `Queue<Integer> q = new ArrayDeque<>();` for better performance
+
+### Circular Queue Index Errors
+- **Problem**: Incorrect index calculation in circular queue
+- **Solution**: Use modulo for wrapping: `(front + 1) % capacity`
+- **Example**: `rear = (rear + 1) % capacity;` for circular queue
+
+### Priority Queue Comparator
+- **Problem**: Wrong comparator for priority queue
+- **Solution**: Use correct comparator: `(a, b) -> a - b` for min heap
+- **Example**: `PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> a - b);`
+
 ## 🎯 Interview Tips
 
 - Think about FIFO when solving problems

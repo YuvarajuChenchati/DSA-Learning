@@ -151,17 +151,86 @@ public static int interpolationSearch(int[] arr, int target) {
 - **Interpolation search**: Best for uniformly distributed data
 - **Exponential search**: Useful for unbounded arrays
 
+## ⚠️ Common Mistakes
+
+### Binary Search Off-by-One Errors
+- **Problem**: Wrong boundary conditions in binary search
+- **Solution**: Use consistent boundary conditions (`left <= right` or `left < right`)
+- **Example**: 
+  ```java
+  // Wrong
+  while (left < right) {
+      if (arr[mid] < target) left = mid; // Should be mid + 1
+  }
+  
+  // Correct
+  while (left <= right) {
+      int mid = left + (right - left) / 2;
+      if (arr[mid] < target) left = mid + 1;
+      else right = mid - 1;
+  }
+  ```
+
+### Integer Overflow
+- **Problem**: `(left + right) / 2` can overflow
+- **Solution**: Use `left + (right - left) / 2`
+- **Example**: Always use safe midpoint calculation
+
+### Not Checking Array Sorted
+- **Problem**: Using binary search on unsorted array
+- **Solution**: Always verify array is sorted first
+- **Example**: Check if array is sorted before binary search
+
+### Missing Base Case in Recursion
+- **Problem**: No base case in recursive binary search
+- **Solution**: Always check `left > right` first
+- **Example**: 
+  ```java
+  if (left > right) return -1; // Base case
+  ```
+
+### Wrong Search Space
+- **Problem**: Incorrectly defining search boundaries
+- **Solution**: Clearly define what you're searching for
+- **Example**: For rotated array, identify which half is sorted
+
 ## 🎯 Interview Tips
 
-- Always check if array is sorted
-- Consider edge cases (empty array, single element)
-- Use binary search for O(log n) solutions
-- Think about search space reduction
-- Consider iterative vs recursive approaches
+### Problem-Solving Approach
+- **Check if sorted**: Always verify array is sorted for binary search
+- **Identify pattern**: Look for search space reduction opportunities
+- **Edge cases**: Empty array, single element, not found
+- **Boundary conditions**: Be careful with `<=` vs `<`
+- **Mid calculation**: Always use safe midpoint formula
+
+### Coding Tips
+- **Use iterative**: Often cleaner than recursive
+- **Consistent boundaries**: Stick with one boundary style
+- **Safe midpoint**: Always use `left + (right - left) / 2`
+- **Test with examples**: Walk through with sample inputs
+- **Handle not found**: Return -1 or appropriate value
+
+### Common Patterns
+- **Standard Binary Search**: For finding exact match
+- **Modified Binary Search**: For rotated arrays, peak finding
+- **Binary Search on Answer**: For optimization problems
+- **Search Space Reduction**: Narrow down search space
 
 ## 📚 Additional Resources
 
+### Practice Problems
+- [Searching Problems](src/algorithms/searching/Problems.md) - Comprehensive problem list (to be created)
+- [Easy Searching Problems](src/problems/easy/README.md) - Easy level problems
+- [Medium Searching Problems](src/problems/medium/README.md) - Medium level problems
+- [Hard Searching Problems](src/problems/hard/README.md) - Hard level problems
+
+### External Resources
 - [Searching Algorithms](https://www.geeksforgeeks.org/searching-algorithms/)
 - [Binary Search](https://www.geeksforgeeks.org/binary-search/)
 - [Jump Search](https://www.geeksforgeeks.org/jump-search/)
 - [Interpolation Search](https://www.geeksforgeeks.org/interpolation-search/)
+
+### Related Topics
+- [Arrays](src/datastructures/arrays/README.md) - Array operations
+- [Divide & Conquer](src/algorithms/divideconquer/README.md) - Divide and conquer
+- [Binary Search Pattern](src/patterns/topkelements/README.md) - Binary search patterns

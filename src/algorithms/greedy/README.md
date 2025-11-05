@@ -135,6 +135,43 @@ public HuffmanNode buildHuffmanTree(char[] data, int[] freq) {
 - **Prove correctness**: Show that greedy choice leads to optimal solution
 - **Consider alternatives**: Sometimes multiple greedy approaches exist
 
+## ⚠️ Common Mistakes
+
+### Not Proving Correctness
+- **Problem**: Using greedy without proving it works
+- **Solution**: Prove that greedy choice leads to optimal solution
+- **Example**: Show that local optimal choice leads to global optimal
+
+### Wrong Greedy Choice
+- **Problem**: Making wrong greedy choice
+- **Solution**: Consider all possible choices and choose best locally
+- **Example**: For activity selection, choose activity with earliest finish time
+
+### Not Sorting First
+- **Problem**: Not sorting data before applying greedy
+- **Solution**: Sort data based on greedy criteria first
+- **Example**: Sort intervals by end time for interval scheduling
+
+### Ignoring Edge Cases
+- **Problem**: Not handling empty input or single element
+- **Solution**: Always check edge cases first
+- **Example**: `if (intervals == null || intervals.length == 0) return 0;`
+
+### Not Considering Constraints
+- **Problem**: Not checking if greedy choice violates constraints
+- **Solution**: Validate greedy choice against constraints
+- **Example**: Check if activity doesn't conflict with previous activities
+
+### Wrong Data Structure
+- **Problem**: Using wrong data structure for greedy
+- **Solution**: Use appropriate structure: heap for priority, set for tracking
+- **Example**: Use PriorityQueue for selecting best option at each step
+
+### Not Backtracking When Needed
+- **Problem**: Using greedy when backtracking is needed
+- **Solution**: Recognize when greedy fails and backtracking is needed
+- **Example**: Greedy works for interval scheduling, but not for all problems
+
 ## 🎯 Interview Tips
 
 - Always prove correctness of greedy approach

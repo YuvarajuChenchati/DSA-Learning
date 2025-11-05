@@ -110,6 +110,43 @@ public static int countSetBits(int n) {
 - **Shifting**: Left shift multiplies by 2, right shift divides by 2
 - **Two's complement**: Negative numbers in binary
 
+## ⚠️ Common Mistakes
+
+### Right Shift vs Unsigned Right Shift
+- **Problem**: Confusing `>>` (signed) with `>>>` (unsigned) right shift
+- **Solution**: Use `>>` for signed numbers, `>>>` for unsigned
+- **Example**: `-1 >> 1` gives -1, but `-1 >>> 1` gives a large positive number
+
+### Operator Precedence
+- **Problem**: Not using parentheses with bitwise operators
+- **Solution**: Use parentheses to avoid precedence issues
+- **Example**: `n & 1 == 0` is wrong, use `(n & 1) == 0`
+
+### Sign Extension Issues
+- **Problem**: Not handling negative numbers correctly
+- **Solution**: Consider two's complement representation
+- **Example**: Right shift on negative numbers fills with 1s (sign extension)
+
+### Bit Index Confusion
+- **Problem**: Confusing 0-indexed vs 1-indexed bit positions
+- **Solution**: Always use 0-indexed (LSB is bit 0)
+- **Example**: Bit 0 is rightmost, bit 31 is leftmost for 32-bit integers
+
+### XOR Properties Misuse
+- **Problem**: Not understanding XOR properties
+- **Solution**: Remember: a ^ a = 0, a ^ 0 = a, XOR is commutative and associative
+- **Example**: Use XOR to find single number in array of duplicates
+
+### Overflow in Bit Shifts
+- **Problem**: Shifting beyond data type width
+- **Solution**: Check shift amount is within valid range
+- **Example**: For 32-bit int, shift amount should be 0-31
+
+### Not Clearing Bits Properly
+- **Problem**: Using wrong mask to clear bits
+- **Solution**: Use `n & ~(1 << i)` to clear bit, `n & (n - 1)` to clear rightmost set bit
+- **Example**: Clear bit 3: `n & ~(1 << 3)`, not `n & (1 << 3)`
+
 ## 🎯 Interview Tips
 
 - Know basic bit operations

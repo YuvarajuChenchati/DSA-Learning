@@ -95,6 +95,38 @@ public void bubbleSort(int[] arr) {
 - **Worst Case**: Maximum time/space required
 - **Amortized**: Average time per operation over sequence
 
+## ⚠️ Common Mistakes
+
+### Confusing Time and Space Complexity
+- **Problem**: Mixing up time and space complexity
+- **Solution**: Time complexity is about runtime, space complexity is about memory
+- **Example**: A recursive function can have O(n) time and O(n) space due to recursion stack
+
+### Only Considering Best Case
+- **Problem**: Analyzing only best-case complexity
+- **Solution**: Always analyze worst-case complexity for interviews
+- **Example**: Quicksort is O(n log n) average but O(n²) worst-case
+
+### Ignoring Hidden Complexity
+- **Problem**: Not accounting for operations inside loops
+- **Solution**: Count nested operations carefully
+- **Example**: `Arrays.sort()` inside a loop adds O(n log n) complexity
+
+### Not Considering Amortized Complexity
+- **Problem**: Treating all operations equally
+- **Solution**: Use amortized analysis for data structures
+- **Example**: ArrayList insertion is O(1) amortized, not always O(1)
+
+### Incorrectly Analyzing Recursive Functions
+- **Problem**: Not accounting for recursion stack space
+- **Solution**: Space complexity includes recursion stack depth
+- **Example**: Binary search has O(log n) space due to recursion stack
+
+### Forgetting Constants and Lower Terms
+- **Problem**: Including constants in Big O notation
+- **Solution**: Drop constants and lower-order terms in Big O
+- **Example**: O(2n) should be written as O(n), O(n² + n) should be O(n²)
+
 ## 🎯 Interview Tips
 
 - Always analyze worst-case complexity

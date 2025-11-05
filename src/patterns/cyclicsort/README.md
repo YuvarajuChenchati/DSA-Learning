@@ -118,6 +118,43 @@ public int findDuplicate(int[] nums) {
 - **Simple logic**: Easy to understand and implement
 - **Useful for**: Finding missing/duplicate numbers
 
+## ⚠️ Common Mistakes
+
+### Not Checking Range
+- **Problem**: Using cyclic sort on numbers not in range [1, n]
+- **Solution**: Always check if numbers are in range [1, n] first
+- **Example**: `if (nums[i] < 1 || nums[i] > n) continue;` for invalid numbers
+
+### Wrong Index Calculation
+- **Problem**: Incorrect index calculation for cyclic sort
+- **Solution**: Index is `nums[i] - 1` for range [1, n]
+- **Example**: `int correctIndex = nums[i] - 1;` for range [1, n]
+
+### Infinite Loop
+- **Problem**: Not checking if element is already in correct position
+- **Solution**: Only swap if element is not in correct position
+- **Example**: `if (nums[i] != nums[correctIndex]) swap(nums, i, correctIndex); else i++;`
+
+### Not Handling Duplicates
+- **Problem**: Not handling duplicate numbers correctly
+- **Solution**: Skip duplicates when they're in correct position
+- **Example**: `if (nums[i] == nums[correctIndex]) i++; else swap(nums, i, correctIndex);`
+
+### Wrong Swap Logic
+- **Problem**: Swapping incorrectly in cyclic sort
+- **Solution**: Swap current element with element at correct position
+- **Example**: `swap(nums, i, nums[i] - 1);` not `swap(nums, i, i + 1);`
+
+### Index Out of Bounds
+- **Problem**: Accessing array elements out of bounds
+- **Solution**: Check bounds before accessing: `correctIndex >= 0 && correctIndex < nums.length`
+- **Example**: `if (nums[i] >= 1 && nums[i] <= n)` before accessing
+
+### Not Handling Empty Array
+- **Problem**: Not checking for empty array
+- **Solution**: Always check `nums == null || nums.length == 0` first
+- **Example**: `if (nums == null || nums.length == 0) return;`
+
 ## 🎯 Interview Tips
 
 - Always check if numbers are in range [1, n]

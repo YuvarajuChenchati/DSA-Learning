@@ -136,6 +136,43 @@ public int[][] insert(int[][] intervals, int[] newInterval) {
 - **Update end**: Take maximum of current and previous end
 - **Handle edge cases**: Empty intervals, single intervals
 
+## ⚠️ Common Mistakes
+
+### Not Sorting First
+- **Problem**: Not sorting intervals before merging
+- **Solution**: Always sort intervals by start time first
+- **Example**: `Arrays.sort(intervals, (a, b) -> a[0] - b[0]);`
+
+### Wrong Overlap Condition
+- **Problem**: Incorrect overlap detection
+- **Solution**: Intervals overlap if `current.start <= previous.end`
+- **Example**: `if (intervals[i][0] <= result.getLast()[1])` for overlap
+
+### Not Updating End Time
+- **Problem**: Not updating end time when merging
+- **Solution**: Take maximum of current and previous end times
+- **Example**: `result.getLast()[1] = Math.max(result.getLast()[1], intervals[i][1]);`
+
+### Not Handling Empty Intervals
+- **Problem**: Not checking for empty intervals array
+- **Solution**: Always check `intervals == null || intervals.length == 0` first
+- **Example**: `if (intervals == null || intervals.length == 0) return new int[0][];`
+
+### Wrong Comparator
+- **Problem**: Wrong comparator for sorting intervals
+- **Solution**: Sort by start time: `(a, b) -> a[0] - b[0]`
+- **Example**: `Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));`
+
+### Not Handling Single Interval
+- **Problem**: Not handling array with single interval
+- **Solution**: Single interval doesn't need merging
+- **Example**: `if (intervals.length == 1) return intervals;`
+
+### Index Out of Bounds
+- **Problem**: Accessing intervals out of bounds
+- **Solution**: Check bounds before accessing: `i < intervals.length`
+- **Example**: `for (int i = 0; i < intervals.length; i++)` not `i <= intervals.length`
+
 ## 🎯 Interview Tips
 
 - Always sort intervals by start time

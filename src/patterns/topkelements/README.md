@@ -119,6 +119,43 @@ public List<Integer> topKFrequent(int[] nums, int k) {
 - **Space optimization**: Use heap of size k
 - **Stream processing**: Maintain heap dynamically
 
+## ⚠️ Common Mistakes
+
+### Wrong Heap Type
+- **Problem**: Using min heap when max heap is needed
+- **Solution**: Use min heap for top K largest, max heap for top K smallest
+- **Example**: `PriorityQueue<Integer> minHeap = new PriorityQueue<>();` for top K largest
+
+### Not Limiting Heap Size
+- **Problem**: Not limiting heap size causing O(n) space
+- **Solution**: Maintain only K elements in heap
+- **Example**: `if (heap.size() > k) heap.poll();` to maintain size k
+
+### Wrong Comparator
+- **Problem**: Wrong comparator for priority queue
+- **Solution**: Use `(a, b) -> a - b` for min heap, `(a, b) -> b - a` for max heap
+- **Example**: `PriorityQueue<Integer> minHeap = new PriorityQueue<>((a, b) -> a - b);`
+
+### Not Handling k > n
+- **Problem**: Not checking if k exceeds array size
+- **Solution**: Always check `k <= nums.length` first
+- **Example**: `if (k > nums.length) return all elements;`
+
+### Empty Heap Access
+- **Problem**: Accessing top element from empty heap
+- **Solution**: Always check `!heap.isEmpty()` before `heap.peek()`
+- **Example**: `if (!heap.isEmpty()) { int top = heap.peek(); }`
+
+### Not Using Frequency Map
+- **Problem**: Not using frequency map for frequency-based problems
+- **Solution**: Use HashMap to count frequencies first
+- **Example**: `Map<Integer, Integer> freq = new HashMap<>();` for frequency counting
+
+### Wrong Frequency Comparison
+- **Problem**: Wrong comparison in frequency-based heap
+- **Solution**: Compare by frequency, then by value if frequencies equal
+- **Example**: `(a, b) -> freq.get(a) - freq.get(b)` for frequency comparison
+
 ## 🎯 Interview Tips
 
 - Always consider heap-based solutions

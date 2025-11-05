@@ -138,6 +138,43 @@ public static long modInverse(long a, long m) {
 - **Sieve**: Efficient for finding all primes up to n
 - **Number theory**: Foundation for many advanced algorithms
 
+## ⚠️ Common Mistakes
+
+### Integer Overflow
+- **Problem**: Not handling large numbers that exceed integer limits
+- **Solution**: Use long or BigInteger for large calculations
+- **Example**: `int product = a * b;` can overflow, use `long product = (long)a * b;`
+
+### Division by Zero
+- **Problem**: Not checking for division by zero
+- **Solution**: Always validate divisors before division
+- **Example**: Check `b != 0` before `a / b` or `a % b`
+
+### Prime Checking Efficiency
+- **Problem**: Checking all divisors up to n instead of √n
+- **Solution**: Only check divisors up to √n
+- **Example**: For prime check, loop `i * i <= n` not `i <= n`
+
+### GCD Algorithm Edge Cases
+- **Problem**: Not handling negative numbers or zero in GCD
+- **Solution**: Handle edge cases: GCD(0, a) = |a|, GCD(a, b) = GCD(|a|, |b|)
+- **Example**: Check for zero before GCD calculation
+
+### Modular Arithmetic Errors
+- **Problem**: Incorrectly applying modular properties
+- **Solution**: Use distributive property: (a * b) mod m = ((a mod m) * (b mod m)) mod m
+- **Example**: Always apply mod at each step to prevent overflow
+
+### LCM Calculation Overflow
+- **Problem**: Calculating LCM as (a * b) / GCD can overflow
+- **Solution**: Use long or calculate in steps
+- **Example**: `long lcm = (long)a / gcd * b;` to avoid overflow
+
+### Factorial Calculation
+- **Problem**: Calculating factorial directly for large numbers
+- **Solution**: Use modular arithmetic or approximation for large factorials
+- **Example**: For large n, use Stirling's approximation or modular arithmetic
+
 ## 🎯 Interview Tips
 
 - Know basic number theory concepts

@@ -121,6 +121,43 @@ private void backtrack(int start, int n, int k, List<Integer> current, List<List
 - **Base case**: Define when to stop recursion
 - **State management**: Track current state
 
+## ⚠️ Common Mistakes
+
+### Not Undoing Choices
+- **Problem**: Not removing element after backtracking
+- **Solution**: Always remove element after recursive call
+- **Example**: `path.remove(path.size() - 1);` after backtracking
+
+### Not Copying State
+- **Problem**: Modifying shared state instead of copying
+- **Solution**: Create copy of state when adding to result
+- **Example**: `result.add(new ArrayList<>(path));` not `result.add(path);`
+
+### Wrong Base Case
+- **Problem**: Wrong base case condition
+- **Solution**: Define when subset is complete
+- **Example**: `if (index == nums.length) { result.add(new ArrayList<>(path)); return; }`
+
+### Duplicate Subsets
+- **Problem**: Generating duplicate subsets
+- **Solution**: Sort array first and skip duplicates
+- **Example**: `if (i > start && nums[i] == nums[i - 1]) continue;` to skip duplicates
+
+### Not Handling Empty Set
+- **Problem**: Not including empty set in result
+- **Solution**: Add empty set explicitly or include in backtracking
+- **Example**: `result.add(new ArrayList<>());` for empty set
+
+### Wrong Index Tracking
+- **Problem**: Not tracking current index correctly
+- **Solution**: Pass current index to recursive function
+- **Example**: `backtrack(nums, i + 1, path, result);` not `backtrack(nums, index, path, result);`
+
+### Not Sorting First
+- **Problem**: Not sorting array before generating subsets
+- **Solution**: Sort array to handle duplicates
+- **Example**: `Arrays.sort(nums);` before generating subsets
+
 ## 🎯 Interview Tips
 
 - Always define base case first

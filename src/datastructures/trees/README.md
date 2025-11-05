@@ -152,6 +152,48 @@ public TreeNode insert(TreeNode root, int val) {
 - **Balanced trees**: Maintain height balance
 - **Tree DP**: Bottom-up or top-down approaches
 
+## ⚠️ Common Mistakes
+
+### Null Pointer Exceptions
+- **Problem**: Not checking for null before accessing node
+- **Solution**: Always check `node != null` before `node.left` or `node.right`
+- **Example**: `if (root != null && root.left != null)` before accessing root.left
+
+### Incorrect BST Property
+- **Problem**: Not maintaining BST property correctly
+- **Solution**: Remember left < root < right for BST
+- **Example**: Check `root.val > left.val && root.val < right.val` for BST
+
+### Stack Overflow in Recursion
+- **Problem**: Deep recursion causing stack overflow
+- **Solution**: Use iterative approach or tail recursion for deep trees
+- **Example**: Use `Stack<TreeNode>` for iterative traversal instead of recursion
+
+### Wrong Traversal Order
+- **Problem**: Using wrong traversal order
+- **Solution**: Understand preorder (root-left-right), inorder (left-root-right), postorder (left-right-root)
+- **Example**: Use inorder for BST to get sorted order
+
+### Incorrect Height Calculation
+- **Problem**: Not calculating height correctly
+- **Solution**: Height is number of edges from root to deepest leaf
+- **Example**: Empty tree has height -1, single node has height 0
+
+### Not Handling Empty Tree
+- **Problem**: Not checking for empty tree
+- **Solution**: Always check `root == null` first
+- **Example**: `if (root == null) return 0;` before processing
+
+### Memory Leaks in Deletion
+- **Problem**: Not properly disconnecting nodes
+- **Solution**: Set parent's child pointer to null when deleting
+- **Example**: `parent.left = null;` or `parent.right = null;` when deleting child
+
+### Infinite Loops in Tree Traversal
+- **Problem**: Creating cycles or not marking visited nodes
+- **Solution**: Use visited set or ensure tree structure is correct
+- **Example**: Mark visited nodes in graph-like tree traversal
+
 ## 🎯 Interview Tips
 
 - Always consider null cases

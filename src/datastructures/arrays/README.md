@@ -135,17 +135,76 @@ public static int maxSumSubarray(int[] arr, int k) {
 - **In-place operations**: Save space complexity
 - **Sorting**: Often simplifies array problems
 
+## ⚠️ Common Mistakes
+
+### Off-by-One Errors
+- **Problem**: Incorrect array bounds checking
+- **Solution**: Always check `i < arr.length` not `i <= arr.length`
+- **Example**: `for (int i = 0; i < arr.length; i++)` not `i <= arr.length`
+
+### Array Index Out of Bounds
+- **Problem**: Accessing array elements without bounds checking
+- **Solution**: Always validate indices before accessing
+- **Example**: Check `index >= 0 && index < arr.length` before accessing
+
+### Memory Issues
+- **Problem**: Creating unnecessary arrays when in-place operations are possible
+- **Solution**: Use two pointers or in-place algorithms
+- **Example**: Remove duplicates in-place instead of creating new array
+
+### Edge Cases
+- **Problem**: Not handling empty arrays, single element, or null inputs
+- **Solution**: Always check for edge cases first
+- **Example**: `if (arr == null || arr.length == 0) return result;`
+
+### Two Pointers Mistakes
+- **Problem**: Moving pointers incorrectly in two-pointer problems
+- **Solution**: Understand when to move which pointer
+- **Example**: In sorted array, move left if sum < target, right if sum > target
+
+### Sliding Window Issues
+- **Problem**: Not maintaining window size correctly
+- **Solution**: Track window boundaries carefully
+- **Example**: Shrink window when condition violated, expand when valid
+
 ## 🎯 Interview Tips
 
-- Start with brute force, then optimize
-- Consider two pointers for sorted arrays
-- Use sliding window for subarray problems
-- Think about in-place operations
-- Consider sorting as a preprocessing step
+### Problem-Solving Approach
+- **Start with brute force**: Get a working solution first
+- **Identify patterns**: Look for two pointers, sliding window, prefix sum
+- **Optimize step by step**: Improve time/space complexity gradually
+- **Consider edge cases**: Empty arrays, single element, null inputs
+- **Think about sorting**: Often simplifies array problems
+
+### Coding Tips
+- **Use descriptive variable names**: `left`, `right`, `windowSum`
+- **Add comments**: Explain complex logic
+- **Handle edge cases first**: Check for null, empty arrays
+- **Test with examples**: Walk through with sample inputs
+- **Optimize space**: Use in-place operations when possible
+
+### Common Patterns
+- **Two Pointers**: For sorted arrays, palindromes, pairs
+- **Sliding Window**: For subarray problems, fixed/variable window
+- **Prefix Sum**: For range sum queries, cumulative problems
+- **Hash Map**: For lookups, frequency counting
+- **Sorting**: When order matters, optimization
 
 ## 📚 Additional Resources
 
+### Practice Problems
+- [Array Problems](src/datastructures/arrays/Problems.md) - Comprehensive problem list
+- [Easy Array Problems](src/problems/easy/README.md) - Easy level problems
+- [Medium Array Problems](src/problems/medium/README.md) - Medium level problems
+- [Hard Array Problems](src/problems/hard/README.md) - Hard level problems
+
+### External Resources
 - [Array Algorithms](https://www.geeksforgeeks.org/array-data-structure/)
 - [Two Pointers Technique](https://www.geeksforgeeks.org/two-pointers-technique/)
 - [Sliding Window Technique](https://www.geeksforgeeks.org/window-sliding-technique/)
 - [Prefix Sum Array](https://www.geeksforgeeks.org/prefix-sum-array-implementation-applications-competitive-programming/)
+
+### Related Topics
+- [Strings](src/datastructures/strings/README.md) - String manipulation
+- [Two Pointers Pattern](src/patterns/twopointers/README.md) - Two pointers technique
+- [Sliding Window Pattern](src/patterns/slidingwindow/README.md) - Sliding window pattern

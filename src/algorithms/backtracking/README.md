@@ -124,6 +124,43 @@ private void permuteHelper(int[] nums, List<Integer> current, boolean[] used, Li
 - **Pruning**: Eliminate invalid paths early
 - **Undo**: Always undo choices when backtracking
 
+## ⚠️ Common Mistakes
+
+### Not Undoing Choices
+- **Problem**: Not undoing choices when backtracking
+- **Solution**: Always undo changes when backtracking
+- **Example**: `path.remove(path.size() - 1);` after recursive call
+
+### Missing Pruning
+- **Problem**: Not pruning invalid paths early
+- **Solution**: Check constraints before recursive call
+- **Example**: `if (isValid(path, next)) { backtrack(path, next); }`
+
+### Not Resetting State
+- **Problem**: Not resetting state between recursive calls
+- **Solution**: Ensure state is properly reset after backtracking
+- **Example**: Mark visited as false after recursive call
+
+### Incorrect Base Case
+- **Problem**: Wrong base case condition
+- **Solution**: Clearly define when solution is complete
+- **Example**: `if (path.size() == n) { result.add(new ArrayList<>(path)); return; }`
+
+### Wrong Choice Order
+- **Problem**: Making choices in wrong order
+- **Solution**: Consider order of choices for efficiency
+- **Example**: Make choices in sorted order to avoid duplicates
+
+### Not Copying State
+- **Problem**: Modifying shared state instead of copying
+- **Solution**: Create copy of state when adding to result
+- **Example**: `result.add(new ArrayList<>(path));` not `result.add(path);`
+
+### Missing Constraints
+- **Problem**: Not checking all constraints
+- **Solution**: Check all constraints before making choice
+- **Example**: Check row, column, and diagonal for N-Queens
+
 ## 🎯 Interview Tips
 
 - Always define base case first
